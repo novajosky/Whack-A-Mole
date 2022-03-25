@@ -9,8 +9,7 @@ let result = 0;
 let hitPosition;
 let currentTime = 10;
 let timerId = null;
-let gameActive;
-let ignoreClicks;
+let countDownTimerId = setInterval(countDown, 1000)
 
 /*----- cached element references -----*/
 const startButton = document.getElementById("new-game")
@@ -20,21 +19,10 @@ const startButton = document.getElementById("new-game")
 startButton.addEventListener("click", handleStart);
 
 /*----- functions -----*/
-init();
-
-function init() {
-    ignoreClicks = true;
-    gameActive = false;
-    render();
-}
-
-function render() {
-    startButton.style.visibility = gameActive ? "hidden" : "visible";
-}
 
 function handleStart() {
-    gameActive = true;
-    render();
+    window.location.reload();
+    return false;
 }
 
 function randomSquare() {
@@ -44,7 +32,6 @@ function randomSquare() {
 
     let randomSquare = squares[Math.floor(Math.random() * 9)]
     randomSquare.classList.add('mole')
-
     hitPosition = randomSquare.id
 }
 
@@ -74,6 +61,6 @@ function countDown() {
         clearInterval(timerId)
         document.getElementById("keyboard").innerHTML = "Game Over! Your final score is " + result;
     }
+    render();
 }
 
-let countDownTimerId = setInterval(countDown, 1000)
