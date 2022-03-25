@@ -1,12 +1,41 @@
+/*----- constants -----*/
 const squares = document.querySelectorAll('.square')
 const mole = document.querySelector('.mole')
 const timeLeft = document.querySelector('#time-left')
 const score = document.querySelector('#score')
 
-let result = 0
-let hitPosition
-let currentTime = 10
-let timerId = null
+/*----- app's state (variables) -----*/
+let result = 0;
+let hitPosition;
+let currentTime = 10;
+let timerId = null;
+let gameActive;
+let ignoreClicks;
+
+/*----- cached element references -----*/
+const startButton = document.getElementById("new-game")
+
+
+/*----- event listeners -----*/
+startButton.addEventListener("click", handleStart);
+
+/*----- functions -----*/
+init();
+
+function init() {
+    ignoreClicks = true;
+    gameActive = false;
+    render();
+}
+
+function render() {
+    startButton.style.visibility = gameActive ? "hidden" : "visible";
+}
+
+function handleStart() {
+    gameActive = true;
+    render();
+}
 
 function randomSquare() {
     squares.forEach(square => {
