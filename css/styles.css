@@ -1,0 +1,17 @@
+.grid {
+    width: 90vmin;
+    height: 90vmin;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.square {
+    height: 30vmin;
+    width: 30vmin;
+    border: solid black 1px;
+}
+
+.mole {
+    background-image: url('../molemole.jpg');
+    background-size: cover;
+}
